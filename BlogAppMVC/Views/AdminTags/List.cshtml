@@ -1,0 +1,56 @@
+﻿@model List<BlogAppMVC.Models.Domain.Tag>
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Show All Tags - Admin Functionality</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Display Name
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tag in Model)
+                {
+                    <tr>
+                        <td>
+                            @tag.Id
+                        </td>
+                        <td>
+                            @tag.Name
+                        </td>
+                        <td>
+                            @tag.DisplayName
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Update", "AdminTags", new { id = tag.Id })" class="btn btn-dark">Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            tags found.
+        </div>
+    }
+</div>
