@@ -33,7 +33,7 @@ namespace BlogAppMVC.Controllers
             }
             return View(userViewModels);
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> List(UserViewModel userViewModel)
         {
