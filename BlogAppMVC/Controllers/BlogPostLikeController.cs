@@ -17,6 +17,7 @@ namespace BlogAppMVC.Controllers
             this.blogPostLikeRepository = blogPostLikeRepository;
         }
         [HttpPost]
+        [Route("Add")]
         public async Task<IActionResult> AddLike([FromBody] AddLike addLike)
         {
             if(addLike != null)
@@ -33,6 +34,14 @@ namespace BlogAppMVC.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [HttpGet]
+        [Route("TotalLike/{blogPostId:Guid}")]
+        public async Task<IActionResult> GetTotalLikeForBlog(Guid blogPostId)
+        {
+            var result = await blogPostLikeRepository.GetTotalLike(blogPostId);
+            return Ok(result);
         }
     }
 }
